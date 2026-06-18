@@ -4,15 +4,192 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import { Github, Linkedin, Mail, ExternalLink, ChevronRight, Brain, Code, Database } from "lucide-react"
+import {
+  Github,
+  Linkedin,
+  ExternalLink,
+  ChevronRight,
+  Brain,
+  Code,
+  Database,
+  Briefcase,
+  GraduationCap,
+  Users,
+  FileText,
+  Award,
+  Activity,
+  Leaf,
+  ShieldAlert,
+} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import ParticleBackground from "../components/particle-background"
 
+const experience = [
+  {
+    role: "Software Development Engineer",
+    org: "AugurAI",
+    period: "Sept 2025 - Present",
+    points: [
+      "Built a production-ready Agentic AI chatbot integrating Vision-Language Models (VLMs) into autonomous defect detection loops.",
+      "Owned end-to-end computer vision infrastructure — from camera configuration and annotation pipelines to iterative model training.",
+      "Established the company's CI/CD pipeline from scratch, automating binary compilation and OTA software delivery to industrial client terminals.",
+    ],
+  },
+]
+
+const internships = [
+  {
+    role: "AI Analyst Intern",
+    org: "Office Hub Tech (Zoho Partner)",
+    period: "Aug 2025 - Nov 2025",
+    points: [
+      "Conceptualized and built an LLM-powered analytics application for Zoho Marketplace, automating metric extraction and insight generation.",
+      "Pitched directly to the CEO and delivered a full knowledge transfer to the internal team.",
+    ],
+  },
+  {
+    role: "Machine Learning Developer Intern",
+    org: "Ministry of Education",
+    period: "Oct 2024 - Jan 2025",
+    points: [
+      "Analyzed global innovation metrics to support strategic planning decisions.",
+      "Resolved critical bugs improving stability and UX of government-facing web platforms.",
+    ],
+  },
+]
+
+const leadership = [
+  {
+    role: "Chairperson, IEEE Student Branch",
+    org: "SRM IST Trichy",
+    period: "Jan 2025 - Nov 2025",
+    points: [
+      "Directed chapter-wide initiatives spanning conferences, technical workshops, and hackathons.",
+      "Drove student engagement with applied research and emerging technologies.",
+    ],
+  },
+  {
+    role: "Founder & President, FOSS Society",
+    org: "SRM IST Trichy",
+    period: "Nov 2023 - Oct 2025",
+    points: [
+      "Founded and led a research-oriented open-source community.",
+      "Organized 3+ technical workshops and 8+ AI/ML events across the institution.",
+    ],
+  },
+  {
+    role: "Member, Cyber Physical Systems Research Team",
+    org: "SRM IST Trichy",
+    period: "Feb 2023 - May 2026",
+    points: [
+      "Contributed to active research over three years.",
+      "Resulting in 3 published papers and 2 manuscripts currently under review across AI and systems domains.",
+    ],
+  },
+]
+
+const projects = [
+  {
+    icon: Activity,
+    color: "text-purple-500",
+    title: "Atrial Fibrillation Prediction",
+    period: "Jun 2025 - Apr 2026",
+    description:
+      "Developing an arrhythmia prediction model leveraging Self-Supervised Learning as a dual encoder for higher reliability and precision.",
+    tags: ["Python", "PyTorch", "Computer Vision", "Time Series", "Docker"],
+    link: null,
+  },
+  {
+    icon: Leaf,
+    color: "text-cyan-500",
+    title: "Plant Disease Diagnosis & Agricultural Chatbot",
+    period: "Dec 2024 - Apr 2025",
+    description:
+      "Leaf-based disease diagnosis plus a chatbot powered by the Grok API for agricultural assistance. Deployed on HuggingFace and published as open source on Zenodo.",
+    tags: ["MobileNetV2", "Computer Vision", "Gradio", "Python", "Docker"],
+    link: "https://doi.org/10.5281/zenodo.15283721",
+  },
+  {
+    icon: ShieldAlert,
+    color: "text-purple-500",
+    title: "NSFW Content Detection",
+    period: "Aug 2024 - Nov 2024",
+    description:
+      "Comparative analysis of 10 models including EfficientNet, ResNet, and MobileNet, optimizing accuracy (63%–94%) for real-time content moderation apps.",
+    tags: ["TensorFlow", "PyTorch", "Deep Learning"],
+    link: "https://github.com/rayeanpatric/nsfw_detection",
+  },
+]
+
+const firstAuthorPubs = [
+  {
+    title:
+      "Dual-Encoder Self-Supervised Learning for Morphology-Rhythm ECG Representation and Arrhythmia Classification",
+    authors: "Rayean Patric, Balaji Ganesh R, Deebalakshmi R.",
+    venue: "Submitted, Jun 2026",
+    contribution:
+      "Conceptualization, architectural framework, implementation, project oversight and manuscript preparation.",
+    status: "Under Review",
+    link: null,
+  },
+]
+
+const coAuthorPubs = [
+  {
+    title: "From Qubit Encoding to Quantum Advantage: Exploring Frontiers of QML",
+    authors: "Balaji Ganesh R, Rayean Patric, Helda Dhanam, et al.",
+    venue: "Submitted, Feb 2026",
+    contribution: "Conceptualization, architectural framework, paper structure and review.",
+    status: "Under Review",
+    link: null,
+  },
+  {
+    title:
+      "Review of Various Integrative Approaches to Cardiovascular Disease and COVID-19: Biomarkers, AI, and Natural Treatments",
+    authors: "Balaji Ganesh R, Deebalakshmi R, Rayean Patric, et al.",
+    venue: "Cureus J Comput Sci — doi: 10.7759/s44389-024-00191-w",
+    contribution: "Conceptualization, end-to-end implementation, SDG-aligned research design.",
+    status: "Published",
+    link: "https://www.cureusjournals.com/articles/191-review-of-various-integrative-approaches-to-cardiovascular-disease-and-covid-19-biomarkers-ai-and-natural-treatments#!/",
+  },
+  {
+    title: "Comprehensive Analysis of YOLO Models for Deployment in Precision Agriculture",
+    authors: "Balaji Ganesh R, Yoga Vignesh, Rayean Patric, et al.",
+    venue: "International Journal of Computers and Their Applications (IJCA), Vol. 32, No. 2, June 2025, p. 92",
+    contribution: "Implementation and manuscript drafting.",
+    status: "Published",
+    link: "https://isca-hq.org/Documents/Journal/Archive/2025/2025volume3202/2025volume320201.pdf",
+  },
+  {
+    title: "Intelligent Vehicle Management System Using IoT",
+    authors: "N. Saranya, S. S. Priya, Rayean Patric.",
+    venue: "2024 5th ICESC, Coimbatore — doi: 10.1109/ICESC60852.2024.10689810",
+    contribution: "Conceptualization, architecture design, simulation, and project oversight.",
+    status: "Published",
+    link: "https://ieeexplore.ieee.org/document/10689810/",
+  },
+]
+
+const certifications = [
+  "Python Developer — Google",
+  "CUDA Toolkit — Nvidia DLI",
+  "Jetson Nano Specialization — Nvidia DLI",
+  "ML Specialization — DeepLearning.AI",
+  "Building Transformer-based NLP — Nvidia DLI",
+]
+
+const achievements = [
+  "1st Prize — Spectrum'25 24 Hrs Hackathon at VIT Chennai",
+  "5+ projects completed, 3 research papers published, 2 under review",
+  "Organized and led 8+ events and workshops under FOSS Society & IEEE",
+  "10+ certifications in Python, SQL, Docker, and ML",
+  "25% Merit Scholarship — SRM Institute of Science and Technology",
+]
+
 export default function Page() {
   const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState("home")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,9 +200,14 @@ export default function Page() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Floating Navigation */}
-      <nav
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Global animated particle background */}
+      <ParticleBackground />
+
+      {/* All page content sits above the particle layer */}
+      <div className="relative z-10">
+        {/* Floating Navigation */}
+        <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled ? "bg-black/80 backdrop-blur-md" : "bg-transparent"
         }`}
@@ -34,8 +216,8 @@ export default function Page() {
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-500">
             RP
           </span>
-          <div className="flex gap-6">
-            {["About", "Experience", "Projects", "Research", "Contact"].map((item) => (
+          <div className="hidden md:flex gap-2 lg:gap-4">
+            {["About", "Experience", "Projects", "Publications", "Contact"].map((item) => (
               <Button
                 key={item}
                 variant="ghost"
@@ -51,7 +233,6 @@ export default function Page() {
 
       {/* Hero Section with Particle Background */}
       <section className="py-24 md:py-32 relative h-screen flex items-center justify-center overflow-hidden" id="home">
-        <ParticleBackground />
         <div className="absolute inset-0 z-0">
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-02-21%20at%2011.26.56%20PM-vef2xMiLRMLO70pBdflcUshRNs7eHT.jpeg"
@@ -60,24 +241,24 @@ export default function Page() {
             className="object-cover opacity-10"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70"></div>
         </div>
 
         <div className="container px-4 md:px-6 mx-auto relative z-10 grid lg:grid-cols-2 gap-8 items-center">
           <div className="text-center lg:text-left">
             <div className="mb-6 inline-flex flex-wrap gap-4">
               <Badge variant="outline" className="text-purple-500 border-purple-500">
-                AI/ML Developer
+                AI Systems Engineer
               </Badge>
               <Badge variant="outline" className="text-purple-500 border-purple-500">
-                Research & Development
+                Researcher
               </Badge>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-500">
               Rayean Patric F
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              Research & Development | AI/ML Specialist | IEEE Chairperson
+              AI Systems Engineer & Researcher | SDE @ AugurAI
             </p>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <Link href="https://github.com/rayeanpatric" target="_blank">
@@ -96,16 +277,6 @@ export default function Page() {
                   LinkedIn
                 </Button>
               </Link>
-              <a href="mailto:patricrayean@gmail.com">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="gap-2 hover:bg-purple-500 hover:text-white transition-all"
-                >
-                  <Mail className="w-5 h-5" />
-                  Contact
-                </Button>
-              </a>
             </div>
           </div>
 
@@ -130,15 +301,22 @@ export default function Page() {
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             <div className="space-y-6">
               <p className="text-gray-300 leading-relaxed">
-                Driven Computer Science student specializing in Artificial Intelligence and Machine Learning, with a
-                proven track record of developing scalable and innovative software solutions. Proficient in Python,
-                JavaScript, and Unix/Linux environments, with hands-on expertise in AI/ML applications.
+                AI systems engineer and researcher with a strong foundation in machine learning, computer vision, and
+                autonomous systems. Published across domains including precision agriculture and biomedical AI (3
+                published, 2 under review), with active research in self-supervised learning for ECG arrhythmia
+                classification.
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                Proven engineering depth through production deployments — agentic AI pipelines, LLM-powered
+                applications, and end-to-end MLOps infrastructure. Complemented by leadership as IEEE Student Branch
+                Chairperson and founder of an open-source research community.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <h3 className="font-semibold mb-2">Education</h3>
-                  <p className="text-sm text-gray-400">B.Tech in Computer Science (AI & ML)</p>
-                  <p className="text-sm text-purple-500">CGPA: 9.12</p>
+                  <p className="text-sm text-gray-400">B.Tech in Computer Science (AI &amp; ML)</p>
+                  <p className="text-sm text-gray-400">SRM IST, Trichy · 2022 – 2026</p>
+                  <p className="text-sm text-purple-500">GPA: 9.27</p>
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Location</h3>
@@ -152,11 +330,11 @@ export default function Page() {
               <div className="space-y-4">
                 {[
                   { skill: "Research & Development", progress: 90 },
-                  { skill: "Machine Learning", progress: 80 },
-                  { skill: "Computer Vision", progress: 80 },
-                  { skill: "Python Development", progress: 80 },
+                  { skill: "Machine Learning & Deep Learning", progress: 88 },
+                  { skill: "Computer Vision", progress: 85 },
+                  { skill: "Agentic AI & LLM Pipelines", progress: 85 },
+                  { skill: "MLOps & Model Deployment", progress: 82 },
                   { skill: "Technical Leadership", progress: 90 },
-                  { skill: "Scientific Writing", progress: 85 },
                 ].map((item) => (
                   <div key={item.skill} className="space-y-2">
                     <div className="flex justify-between">
@@ -167,6 +345,27 @@ export default function Page() {
                   </div>
                 ))}
               </div>
+              <div>
+                <h3 className="font-semibold mb-3">Technical Skills</h3>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Python",
+                    "JavaScript",
+                    "SQL",
+                    "Docker",
+                    "PyTorch",
+                    "TensorFlow",
+                    "Computer Vision",
+                    "Neural Networks",
+                    "Agentic Pipelines",
+                    "Model Deployment",
+                  ].map((s) => (
+                    <Badge key={s} variant="secondary">
+                      {s}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -175,52 +374,81 @@ export default function Page() {
       {/* Experience Section */}
       <section className="py-20 md:py-28" id="experience">
         <div className="container px-4 md:px-6 mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Experience</h2>
+          <div className="flex items-center justify-center gap-3 mb-16">
+            <Briefcase className="w-8 h-8 text-purple-500" />
+            <h2 className="text-3xl md:text-4xl font-bold text-center">Experience</h2>
+          </div>
           <div className="max-w-4xl mx-auto space-y-8">
-            <Card className="p-8 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all">
-              <div className="flex flex-col md:flex-row justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold">IEEE Chairperson</h3>
-                  <p className="text-purple-500">SRM Institute of Science and Technology</p>
+            {experience.map((exp) => (
+              <Card
+                key={exp.role}
+                className="p-8 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all"
+              >
+                <div className="flex flex-col md:flex-row justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold">{exp.role}</h3>
+                    <p className="text-purple-500">{exp.org}</p>
+                  </div>
+                  <p className="text-gray-400">{exp.period}</p>
                 </div>
-                <p className="text-gray-400">January 2025 - Present</p>
-              </div>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>Leading IEEE Student Branch initiatives and technical activities</li>
-                <li>Organizing workshops and conferences in emerging technologies</li>
-                <li>Collaborating academia and industry</li>
-              </ul>
-            </Card>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <Card className="p-8 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all">
-              <div className="flex flex-col md:flex-row justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold">Machine Learning Developer</h3>
-                  <p className="text-purple-500">Ministry of Education</p>
+      {/* Internships Section */}
+      <section className="py-20 md:py-28 bg-black/50" id="internships">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-16">
+            <GraduationCap className="w-8 h-8 text-cyan-500" />
+            <h2 className="text-3xl md:text-4xl font-bold text-center">Internships</h2>
+          </div>
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+            {internships.map((exp) => (
+              <Card
+                key={exp.role}
+                className="p-8 bg-gray-900/50 border-gray-800 hover:border-cyan-500 transition-all"
+              >
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold">{exp.role}</h3>
+                  <p className="text-cyan-500">{exp.org}</p>
+                  <p className="text-gray-400 text-sm mt-1">{exp.period}</p>
                 </div>
-                <p className="text-gray-400">October 2024 - January 2025</p>
-              </div>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>Conducted in-depth data analysis on global innovation metrics</li>
-                <li>Improved web platform performance and user experience</li>
-                <li>Developed and implemented ML models for data analysis</li>
-              </ul>
-            </Card>
+                <ul className="list-disc list-inside text-gray-300 space-y-2">
+                  {exp.points.map((p) => (
+                    <li key={p}>{p}</li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <Card className="p-8 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all">
-              <div className="flex flex-col md:flex-row justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold">President</h3>
-                  <p className="text-purple-500">FOSS Society</p>
-                </div>
-                <p className="text-gray-400">November 2023 - February 2025</p>
-              </div>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>Led 6+ major open-source technology initiatives</li>
-                <li>Organized 8+ technical events and workshops</li>
-                <li>Managed 20+ team members and developed a community.</li>
-              </ul>
-            </Card>
+      {/* Leadership Section */}
+      <section className="py-20 md:py-28" id="leadership">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-16">
+            <Users className="w-8 h-8 text-purple-500" />
+            <h2 className="text-3xl md:text-4xl font-bold text-center">Leadership &amp; Volunteering</h2>
+          </div>
+          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+            {leadership.map((exp) => (
+              <Card
+                key={exp.role}
+                className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all"
+              >
+                <h3 className="text-lg font-bold mb-1">{exp.role}</h3>
+                <p className="text-purple-500 text-sm">{exp.org}</p>
+                <p className="text-gray-400 text-sm mb-4">{exp.period}</p>
+                <ul className="list-disc list-inside text-gray-300 space-y-2 text-sm">
+                  {exp.points.map((p) => (
+                    <li key={p}>{p}</li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -230,118 +458,132 @@ export default function Page() {
         <div className="container px-4 md:px-6 mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Featured Projects</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all group">
-              <Brain className="w-12 h-12 text-purple-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2">A Plant Disease Diagnosis Tool + Agricultural AI Chatbot</h3>
-              <p className="text-gray-300 mb-4">
-                 An AI-powered web application designed for rapid plant disease diagnosis and intelligent agricultural query resolution.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <Badge>Python</Badge>
-                <Badge>LLM</Badge>
-                <Badge>Groq</Badge>
-                <Badge>Huggingface</Badge>
-              </div>
-              <ChevronRight className="w-6 h-6 text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-4 right-4" />
-            </Card>
-
-            <Card className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all group">
-              <Database className="w-12 h-12 text-cyan-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2">NSFW Content Detection</h3>
-              <p className="text-gray-300 mb-4">
-                Comparative analysis of 10 models including EfficientNet, ResNet, and MobileNet for content moderation
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <Badge>PyTorch</Badge>
-                <Badge>TensorFlow</Badge>
-                <Badge>Computer Vision</Badge>
-              </div>
-              <ChevronRight className="w-6 h-6 text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-4 right-4" />
-            </Card>
-
-            <Card className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all group">
-              <Code className="w-12 h-12 text-purple-500 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Pest Detection System</h3>
-              <p className="text-gray-300 mb-4">
-                YOLO-based pest detection achieving 95% accuracy for precision agriculture applications
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <Badge>YOLO</Badge>
-                <Badge>TensorRT</Badge>
-                <Badge>Jetson Nano</Badge>
-              </div>
-              <ChevronRight className="w-6 h-6 text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-4 right-4" />
-            </Card>
+            {projects.map((project) => {
+              const Icon = project.icon
+              const content = (
+                <Card className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all group relative h-full">
+                  <Icon className={`w-12 h-12 ${project.color} mb-4`} />
+                  <h3 className="text-xl font-bold mb-1">{project.title}</h3>
+                  <p className="text-xs text-gray-500 mb-3">{project.period}</p>
+                  <p className="text-gray-300 mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <Badge key={tag}>{tag}</Badge>
+                    ))}
+                  </div>
+                  {project.link && (
+                    <span className="mt-4 inline-flex items-center gap-1 text-sm text-cyan-500">
+                      {project.link.includes("github.com")
+                        ? "View on GitHub"
+                        : project.link.includes("zenodo")
+                          ? "View on Zenodo"
+                          : "View Project"}{" "}
+                      <ExternalLink className="w-4 h-4" />
+                    </span>
+                  )}
+                  {project.link && (
+                    <ChevronRight className="w-6 h-6 text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-4 right-4" />
+                  )}
+                </Card>
+              )
+              return project.link ? (
+                <Link key={project.title} href={project.link} target="_blank" rel="noopener noreferrer">
+                  {content}
+                </Link>
+              ) : (
+                <div key={project.title}>{content}</div>
+              )
+            })}
           </div>
         </div>
       </section>
 
       {/* Research Metrics */}
-      <section className="py-16 md:py-24 bg-black/50">
+      <section className="py-16 md:py-24">
         <div className="container px-4 md:px-6 mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Research Impact</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <Card className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all text-center">
-              <h3 className="text-3xl font-bold text-purple-500 mb-2">2</h3>
-              <p className="text-gray-300">Published Papers</p>
-            </Card>
-            <Card className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all text-center">
-              <h3 className="text-3xl font-bold text-purple-500 mb-2">2</h3>
-              <p className="text-gray-300">In Review</p>
-            </Card>
-            <Card className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all text-center">
-              <h3 className="text-3xl font-bold text-purple-500 mb-2">2</h3>
-              <p className="text-gray-300">Ongoing Projects</p>
-            </Card>
-            <Card className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all text-center">
-              <h3 className="text-3xl font-bold text-purple-500 mb-2">3</h3>
-              <p className="text-gray-300">Completed Projects</p>
-            </Card>
+            {[
+              { value: "3", label: "Published Papers" },
+              { value: "2", label: "Under Review" },
+              { value: "5+", label: "Projects Built" },
+              { value: "9.27", label: "GPA" },
+            ].map((stat) => (
+              <Card
+                key={stat.label}
+                className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all text-center"
+              >
+                <h3 className="text-3xl font-bold text-purple-500 mb-2">{stat.value}</h3>
+                <p className="text-gray-300">{stat.label}</p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Research & Publications */}
-      <section className="py-20 md:py-28" id="research">
+      {/* Publications Section */}
+      <section className="py-20 md:py-28 bg-black/50" id="publications">
         <div className="container px-4 md:px-6 mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Research & Publications</h2>
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            <Link
-              href="https://www.cureusjournals.com/articles/191-review-of-various-integrative-approaches-to-cardiovascular-disease-and-covid-19-biomarkers-ai-and-natural-treatments#!/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <Card className="p-8 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all">
-                <Database className="w-12 h-12 text-purple-500 mb-4" />
-                <h3 className="text-xl font-bold mb-4">Cardiovascular Disease and COVID-19 Research</h3>
-                <p className="text-gray-300 mb-4">
-                  Review of various Integrative Approaches to Cardiovascular Disease and COVID-19: Biomarkers, AI, and
-                  Natural Treatments
-                </p>
-                <div className="space-y-2">
-                  <Badge variant="secondary">Published in Cureus</Badge>
-                </div>
-              </Card>
-            </Link>
+          <div className="flex items-center justify-center gap-3 mb-16">
+            <FileText className="w-8 h-8 text-purple-500" />
+            <h2 className="text-3xl md:text-4xl font-bold text-center">Publications</h2>
+          </div>
 
-            <Link
-              href="https://ieeexplore.ieee.org/document/10689810/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <Card className="p-8 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all">
-                <Database className="w-12 h-12 text-cyan-500 mb-4" />
-                <h3 className="text-xl font-bold mb-4">Intelligent Vehicle Management System</h3>
-                <p className="text-gray-300 mb-4">
-                  IoT-based system for traffic rule enforcement and road safety improvement
-                </p>
-                <div className="space-y-2">
-                  <Badge variant="secondary">Published in IEEE Xplore</Badge>
-                </div>
-              </Card>
-            </Link>
+          <div className="max-w-4xl mx-auto space-y-10">
+            <div>
+              <h3 className="text-xl font-semibold mb-6 text-purple-500">First Author</h3>
+              <div className="space-y-6">
+                {firstAuthorPubs.map((pub) => (
+                  <PublicationCard key={pub.title} pub={pub} />
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-6 text-cyan-500">Co-Author</h3>
+              <div className="space-y-6">
+                {coAuthorPubs.map((pub) => (
+                  <PublicationCard key={pub.title} pub={pub} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications & Achievements */}
+      <section className="py-20 md:py-28">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+            <Card className="p-8 bg-gray-900/50 border-gray-800">
+              <div className="flex items-center gap-3 mb-6">
+                <Award className="w-7 h-7 text-cyan-500" />
+                <h3 className="text-2xl font-bold">Certifications</h3>
+              </div>
+              <ul className="space-y-3">
+                {certifications.map((c) => (
+                  <li key={c} className="flex items-start gap-2 text-gray-300">
+                    <ChevronRight className="w-5 h-5 text-cyan-500 mt-0.5 shrink-0" />
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            <Card className="p-8 bg-gray-900/50 border-gray-800">
+              <div className="flex items-center gap-3 mb-6">
+                <Award className="w-7 h-7 text-purple-500" />
+                <h3 className="text-2xl font-bold">Achievements</h3>
+              </div>
+              <ul className="space-y-3">
+                {achievements.map((a) => (
+                  <li key={a} className="flex items-start gap-2 text-gray-300">
+                    <ChevronRight className="w-5 h-5 text-purple-500 mt-0.5 shrink-0" />
+                    <span>{a}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
           </div>
         </div>
       </section>
@@ -351,22 +593,22 @@ export default function Page() {
         <div className="container px-4 md:px-6 mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Get In Touch</h2>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            Interested in collaborating on AI/ML projects or research? Let's connect and discuss how we can work
+            Interested in collaborating on AI/ML projects or research? Let&apos;s connect and discuss how we can work
             together.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="mailto:patricrayean@gmail.com">
+            <Link href="https://github.com/rayeanpatric" target="_blank">
               <Button variant="outline" size="lg" className="gap-2 hover:bg-purple-500 hover:text-white transition-all">
-                <Mail className="w-5 h-5" />
-                patricrayean@gmail.com
+                <Github className="w-5 h-5" />
+                GitHub
               </Button>
-            </a>
-            <a href="tel:+918903847468">
+            </Link>
+            <Link href="https://linkedin.com/in/rayeanpatric" target="_blank">
               <Button variant="outline" size="lg" className="gap-2 hover:bg-cyan-500 hover:text-white transition-all">
-                <ExternalLink className="w-5 h-5" />
-                +91 8903847468
+                <Linkedin className="w-5 h-5" />
+                LinkedIn
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -377,6 +619,50 @@ export default function Page() {
           <p>© {new Date().getFullYear()} Rayean Patric F. All rights reserved.</p>
         </div>
       </footer>
+      </div>
     </div>
+  )
+}
+
+function PublicationCard({
+  pub,
+}: {
+  pub: {
+    title: string
+    authors: string
+    venue: string
+    contribution: string
+    status: string
+    link: string | null
+  }
+}) {
+  const inner = (
+    <Card className="p-6 md:p-8 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all group h-full">
+      <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-3">
+        <h4 className="text-lg font-bold leading-snug">{pub.title}</h4>
+        <Badge
+          variant="secondary"
+          className={pub.status === "Published" ? "text-cyan-500 shrink-0" : "text-purple-500 shrink-0"}
+        >
+          {pub.status}
+        </Badge>
+      </div>
+      <p className="text-sm text-gray-300 mb-1">{pub.authors}</p>
+      <p className="text-sm text-gray-400 mb-3">{pub.venue}</p>
+      <p className="text-sm text-gray-500 italic mb-2">Contribution: {pub.contribution}</p>
+      {pub.link && (
+        <span className="inline-flex items-center gap-1 text-sm text-cyan-500">
+          Read paper <ExternalLink className="w-4 h-4" />
+        </span>
+      )}
+    </Card>
+  )
+
+  return pub.link ? (
+    <Link href={pub.link} target="_blank" rel="noopener noreferrer" className="block">
+      {inner}
+    </Link>
+  ) : (
+    inner
   )
 }
