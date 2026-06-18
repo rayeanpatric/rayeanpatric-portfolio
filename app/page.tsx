@@ -7,7 +7,6 @@ import { Progress } from "@/components/ui/progress"
 import {
   Github,
   Linkedin,
-  Mail,
   ExternalLink,
   ChevronRight,
   Brain,
@@ -120,7 +119,7 @@ const projects = [
     description:
       "Comparative analysis of 10 models including EfficientNet, ResNet, and MobileNet, optimizing accuracy (63%–94%) for real-time content moderation apps.",
     tags: ["TensorFlow", "PyTorch", "Deep Learning"],
-    link: null,
+    link: "https://github.com/rayeanpatric/nsfw_detection",
   },
 ]
 
@@ -161,7 +160,7 @@ const coAuthorPubs = [
     venue: "International Journal of Computers and Their Applications (IJCA), Vol. 32, No. 2, June 2025, p. 92",
     contribution: "Implementation and manuscript drafting.",
     status: "Published",
-    link: null,
+    link: "https://isca-hq.org/Documents/Journal/Archive/2025/2025volume3202/2025volume320201.pdf",
   },
   {
     title: "Intelligent Vehicle Management System Using IoT",
@@ -274,16 +273,6 @@ export default function Page() {
                   LinkedIn
                 </Button>
               </Link>
-              <a href="mailto:patricrayean@gmail.com">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="gap-2 hover:bg-purple-500 hover:text-white transition-all"
-                >
-                  <Mail className="w-5 h-5" />
-                  Contact
-                </Button>
-              </a>
             </div>
           </div>
 
@@ -485,10 +474,17 @@ export default function Page() {
                   </div>
                   {project.link && (
                     <span className="mt-4 inline-flex items-center gap-1 text-sm text-cyan-500">
-                      View on Zenodo <ExternalLink className="w-4 h-4" />
+                      {project.link.includes("github.com")
+                        ? "View on GitHub"
+                        : project.link.includes("zenodo")
+                          ? "View on Zenodo"
+                          : "View Project"}{" "}
+                      <ExternalLink className="w-4 h-4" />
                     </span>
                   )}
-                  <ChevronRight className="w-6 h-6 text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-4 right-4" />
+                  {project.link && (
+                    <ChevronRight className="w-6 h-6 text-purple-500 opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-4 right-4" />
+                  )}
                 </Card>
               )
               return project.link ? (
@@ -602,18 +598,6 @@ export default function Page() {
             together.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="mailto:patricrayean@gmail.com">
-              <Button variant="outline" size="lg" className="gap-2 hover:bg-purple-500 hover:text-white transition-all">
-                <Mail className="w-5 h-5" />
-                patricrayean@gmail.com
-              </Button>
-            </a>
-            <a href="tel:+918903847468">
-              <Button variant="outline" size="lg" className="gap-2 hover:bg-cyan-500 hover:text-white transition-all">
-                <ExternalLink className="w-5 h-5" />
-                +91 89038 47468
-              </Button>
-            </a>
             <Link href="https://github.com/rayeanpatric" target="_blank">
               <Button variant="outline" size="lg" className="gap-2 hover:bg-purple-500 hover:text-white transition-all">
                 <Github className="w-5 h-5" />
