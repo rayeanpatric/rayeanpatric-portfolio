@@ -23,7 +23,7 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+
 import ParticleBackground from "../components/particle-background"
 
 const experience = [
@@ -189,15 +189,6 @@ const achievements = [
 ]
 
 export default function Page() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
@@ -207,11 +198,7 @@ export default function Page() {
       {/* All page content sits above the particle layer */}
       <div className="relative z-10">
         {/* Floating Navigation */}
-        <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-black/80 backdrop-blur-md" : "bg-transparent"
-        }`}
-      >
+        <nav className="w-full z-50 bg-black/80 backdrop-blur-md">
         <div className="container px-4 md:px-6 mx-auto h-16 flex items-center justify-between">
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-500">
             RP
