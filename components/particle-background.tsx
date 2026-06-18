@@ -24,8 +24,8 @@ export default function ParticleBackground() {
     canvas.height = window.innerHeight
 
     const particles: Particle[] = []
-    const particleCount = 100
-    const connectionDistance = 100
+    const particleCount = 130
+    const connectionDistance = 120
 
     class Particle {
       x: number
@@ -57,7 +57,7 @@ export default function ParticleBackground() {
       draw() {
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-        ctx.fillStyle = "rgba(147, 51, 234, 0.5)" // Purple
+        ctx.fillStyle = "rgba(147, 51, 234, 0.65)" // Purple
         ctx.fill()
       }
     }
@@ -82,8 +82,8 @@ export default function ParticleBackground() {
 
           if (distance < connectionDistance) {
             ctx.beginPath()
-            ctx.strokeStyle = `rgba(147, 51, 234, ${1 - distance / connectionDistance})`
-            ctx.lineWidth = 1
+            ctx.strokeStyle = `rgba(147, 51, 234, ${(1 - distance / connectionDistance) * 0.75})`
+            ctx.lineWidth = 0.8
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
             ctx.stroke()

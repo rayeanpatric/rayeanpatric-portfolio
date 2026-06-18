@@ -23,7 +23,7 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+
 import ParticleBackground from "../components/particle-background"
 
 const experience = [
@@ -189,15 +189,6 @@ const achievements = [
 ]
 
 export default function Page() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
@@ -207,11 +198,7 @@ export default function Page() {
       {/* All page content sits above the particle layer */}
       <div className="relative z-10">
         {/* Floating Navigation */}
-        <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-black/80 backdrop-blur-md" : "bg-transparent"
-        }`}
-      >
+        <nav className="w-full z-50 bg-black/80 backdrop-blur-md">
         <div className="container px-4 md:px-6 mx-auto h-16 flex items-center justify-between">
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-500">
             RP
@@ -241,7 +228,7 @@ export default function Page() {
             className="object-cover opacity-10"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40"></div>
         </div>
 
         <div className="container px-4 md:px-6 mx-auto relative z-10 grid lg:grid-cols-2 gap-8 items-center">
@@ -295,7 +282,7 @@ export default function Page() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 md:py-28 bg-black/50" id="about">
+      <section className="py-20 md:py-28 bg-black/15" id="about">
         <div className="container px-4 md:px-6 mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">About Me</h2>
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
@@ -382,7 +369,7 @@ export default function Page() {
             {experience.map((exp) => (
               <Card
                 key={exp.role}
-                className="p-8 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all"
+                className="p-8 bg-gray-900/20 border-gray-800 hover:border-purple-500 transition-all"
               >
                 <div className="flex flex-col md:flex-row justify-between">
                   <div>
@@ -398,7 +385,7 @@ export default function Page() {
       </section>
 
       {/* Internships Section */}
-      <section className="py-20 md:py-28 bg-black/50" id="internships">
+      <section className="py-20 md:py-28 bg-black/15" id="internships">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex items-center justify-center gap-3 mb-16">
             <GraduationCap className="w-8 h-8 text-cyan-500" />
@@ -408,7 +395,7 @@ export default function Page() {
             {internships.map((exp) => (
               <Card
                 key={exp.role}
-                className="p-8 bg-gray-900/50 border-gray-800 hover:border-cyan-500 transition-all"
+                className="p-8 bg-gray-900/20 border-gray-800 hover:border-cyan-500 transition-all"
               >
                 <div className="mb-4">
                   <h3 className="text-xl font-bold">{exp.role}</h3>
@@ -437,7 +424,7 @@ export default function Page() {
             {leadership.map((exp) => (
               <Card
                 key={exp.role}
-                className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all"
+                className="p-6 bg-gray-900/20 border-gray-800 hover:border-purple-500 transition-all"
               >
                 <h3 className="text-lg font-bold mb-1">{exp.role}</h3>
                 <p className="text-purple-500 text-sm">{exp.org}</p>
@@ -454,14 +441,14 @@ export default function Page() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 md:py-28 bg-black/50" id="projects">
+      <section className="py-20 md:py-28 bg-black/15" id="projects">
         <div className="container px-4 md:px-6 mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Featured Projects</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => {
               const Icon = project.icon
               const content = (
-                <Card className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all group relative h-full">
+                <Card className="p-6 bg-gray-900/20 border-gray-800 hover:border-purple-500 transition-all group relative h-full">
                   <Icon className={`w-12 h-12 ${project.color} mb-4`} />
                   <h3 className="text-xl font-bold mb-1">{project.title}</h3>
                   <p className="text-xs text-gray-500 mb-3">{project.period}</p>
@@ -511,7 +498,7 @@ export default function Page() {
             ].map((stat) => (
               <Card
                 key={stat.label}
-                className="p-6 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all text-center"
+                className="p-6 bg-gray-900/20 border-gray-800 hover:border-purple-500 transition-all text-center"
               >
                 <h3 className="text-3xl font-bold text-purple-500 mb-2">{stat.value}</h3>
                 <p className="text-gray-300">{stat.label}</p>
@@ -522,7 +509,7 @@ export default function Page() {
       </section>
 
       {/* Publications Section */}
-      <section className="py-20 md:py-28 bg-black/50" id="publications">
+      <section className="py-20 md:py-28 bg-black/15" id="publications">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex items-center justify-center gap-3 mb-16">
             <FileText className="w-8 h-8 text-purple-500" />
@@ -555,7 +542,7 @@ export default function Page() {
       <section className="py-20 md:py-28">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
-            <Card className="p-8 bg-gray-900/50 border-gray-800">
+            <Card className="p-8 bg-gray-900/20 border-gray-800">
               <div className="flex items-center gap-3 mb-6">
                 <Award className="w-7 h-7 text-cyan-500" />
                 <h3 className="text-2xl font-bold">Certifications</h3>
@@ -570,7 +557,7 @@ export default function Page() {
               </ul>
             </Card>
 
-            <Card className="p-8 bg-gray-900/50 border-gray-800">
+            <Card className="p-8 bg-gray-900/20 border-gray-800">
               <div className="flex items-center gap-3 mb-6">
                 <Award className="w-7 h-7 text-purple-500" />
                 <h3 className="text-2xl font-bold">Achievements</h3>
@@ -589,7 +576,7 @@ export default function Page() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 md:py-28 bg-black/50" id="contact">
+      <section className="py-20 md:py-28 bg-black/15" id="contact">
         <div className="container px-4 md:px-6 mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Get In Touch</h2>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
@@ -637,7 +624,7 @@ function PublicationCard({
   }
 }) {
   const inner = (
-    <Card className="p-6 md:p-8 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all group h-full">
+    <Card className="p-6 md:p-8 bg-gray-900/20 border-gray-800 hover:border-purple-500 transition-all group h-full">
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-3">
         <h4 className="text-lg font-bold leading-snug">{pub.title}</h4>
         <Badge
