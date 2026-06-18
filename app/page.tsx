@@ -200,9 +200,14 @@ export default function Page() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Floating Navigation */}
-      <nav
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Global animated particle background */}
+      <ParticleBackground />
+
+      {/* All page content sits above the particle layer */}
+      <div className="relative z-10">
+        {/* Floating Navigation */}
+        <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled ? "bg-black/80 backdrop-blur-md" : "bg-transparent"
         }`}
@@ -228,7 +233,6 @@ export default function Page() {
 
       {/* Hero Section with Particle Background */}
       <section className="py-24 md:py-32 relative h-screen flex items-center justify-center overflow-hidden" id="home">
-        <ParticleBackground />
         <div className="absolute inset-0 z-0">
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-02-21%20at%2011.26.56%20PM-vef2xMiLRMLO70pBdflcUshRNs7eHT.jpeg"
@@ -237,7 +241,7 @@ export default function Page() {
             className="object-cover opacity-10"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70"></div>
         </div>
 
         <div className="container px-4 md:px-6 mx-auto relative z-10 grid lg:grid-cols-2 gap-8 items-center">
@@ -254,7 +258,7 @@ export default function Page() {
               Rayean Patric F
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              AI Systems Engineer & Researcher | SDE @ AugurAI | Ex-IEEE Chairperson
+              AI Systems Engineer & Researcher | SDE @ AugurAI
             </p>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <Link href="https://github.com/rayeanpatric" target="_blank">
@@ -380,18 +384,13 @@ export default function Page() {
                 key={exp.role}
                 className="p-8 bg-gray-900/50 border-gray-800 hover:border-purple-500 transition-all"
               >
-                <div className="flex flex-col md:flex-row justify-between mb-4">
+                <div className="flex flex-col md:flex-row justify-between">
                   <div>
                     <h3 className="text-xl font-bold">{exp.role}</h3>
                     <p className="text-purple-500">{exp.org}</p>
                   </div>
                   <p className="text-gray-400">{exp.period}</p>
                 </div>
-                <ul className="list-disc list-inside text-gray-300 space-y-2">
-                  {exp.points.map((p) => (
-                    <li key={p}>{p}</li>
-                  ))}
-                </ul>
               </Card>
             ))}
           </div>
@@ -620,6 +619,7 @@ export default function Page() {
           <p>© {new Date().getFullYear()} Rayean Patric F. All rights reserved.</p>
         </div>
       </footer>
+      </div>
     </div>
   )
 }
