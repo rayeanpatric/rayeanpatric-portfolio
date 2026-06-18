@@ -57,7 +57,7 @@ export default function ParticleBackground() {
       draw() {
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-        ctx.fillStyle = "rgba(147, 51, 234, 0.5)" // Purple
+        ctx.fillStyle = "rgba(147, 51, 234, 0.25)" // Purple
         ctx.fill()
       }
     }
@@ -82,7 +82,7 @@ export default function ParticleBackground() {
 
           if (distance < connectionDistance) {
             ctx.beginPath()
-            ctx.strokeStyle = `rgba(147, 51, 234, ${1 - distance / connectionDistance})`
+            ctx.strokeStyle = `rgba(147, 51, 234, ${(1 - distance / connectionDistance) * 0.4})`
             ctx.lineWidth = 1
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
