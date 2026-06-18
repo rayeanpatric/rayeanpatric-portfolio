@@ -108,5 +108,5 @@ export default function ParticleBackground() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="fixed inset-0 z-0 bg-transparent pointer-events-none" />
+  return <canvas ref={canvasRef} className="fixed inset-0 z-[5] bg-transparent pointer-events-none" />
 }
